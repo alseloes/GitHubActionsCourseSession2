@@ -79,7 +79,33 @@
 # --------------------Example 5: env -----------------#
 # Se emplea para generar variables de entorno
 
-name: Fifth Deploy Session 2
+# name: Fifth Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+
+#     env: #Definir variables de entorno
+#       NAME: CodigoFacilito
+
+#     steps:
+#       - name: Hola Mundo
+#         run: echo "Hola mundo $NAME"
+
+#   second-job:
+#     needs: first-job
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola Mundo segundo
+#         run: echo "Hola mundo segundo"
+
+# --------------------Example 6: Steps & actions -----------------#
+# Action se ejecuta a nivel de steps
+
+name: Sixth Deploy Session 2
 
 on: push
 
@@ -87,12 +113,18 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
 
-    env: #Definir variables de entorno
+    env:
       NAME: CodigoFacilito
 
     steps:
-      - name: Hola Mundo
-        run: echo "Hola mundo $NAME"
+      - name: Working dir
+        run: ls -la
+
+      - name: Action
+        uses: actions/checkout@v4
+
+      - name: Working dir after action
+        run: ls -la
 
   second-job:
     needs: first-job
@@ -100,4 +132,4 @@ jobs:
 
     steps:
       - name: Hola Mundo segundo
-        run: echo "Hola mundo segundo"
+        run: echo "Hola mundo segundo {{github.ref}}"
