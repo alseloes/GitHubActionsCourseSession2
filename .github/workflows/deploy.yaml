@@ -161,15 +161,46 @@
 #         run: echo "Hola mundo segundo {{github.ref}}"
 
 # --------------------Example 8: Compartir información entre steps -----------------#
-# Variable de entorno
 
-name: Eighth Deploy Session 2
+# name: Eighth Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+
+#     env:
+#       NAME: CodigoFacilito
+
+#     steps:
+#       - name: Visualizando path
+#         id: step_1
+#         run: echo "my-variable=Hola Mundo" >> GITHUB_OUTPUT
+
+#       - name: Obtener mensaje
+#         run: echo "{{ steps.step_1.outputs.my_variable }}"
+
+#   second-job:
+#     needs: first-job
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola Mundo segundo
+#         run: echo "Hola mundo segundo {{github.ref}}"
+
+# --------------------Example 9: Compartir información entre jobs -----------------#
+
+name: ninth Deploy Session 2
 
 on: push
 
 jobs:
   first-job:
     runs-on: ubuntu-latest
+
+    outputs:
+      salida: { { steps.step_1.outputs.my_variable } }
 
     env:
       NAME: CodigoFacilito
@@ -186,6 +217,9 @@ jobs:
     needs: first-job
     runs-on: ubuntu-latest
 
+    env:
+      SALIDA: ${{ needs.first-job.outputs.salida }}
+
     steps:
       - name: Hola Mundo segundo
-        run: echo "Hola mundo segundo {{github.ref}}"
+        run: echo "$SALIDA"
