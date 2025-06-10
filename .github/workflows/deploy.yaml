@@ -1,0 +1,11 @@
+name: Deploy Session 2
+
+on: push
+
+jobs:
+  first-deploy-session2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola Mundo
+        run: echo "Hola mundo"
