@@ -185,7 +185,6 @@ jobs:
     steps:
       - name: Hola Mundo segundo
         run: echo "Hola mundo segundo ${{ github.ref }}"
-
 # --------------------Example 9: Compartir información entre jobs -----------------#
 
 # name: ninth Deploy Session 2
