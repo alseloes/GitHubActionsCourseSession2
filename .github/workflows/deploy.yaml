@@ -1,11 +1,18 @@
-name: Deploy Session 2
+name: Second Deploy Session 2
 
 on: push
 
 jobs:
-  first-deploy-session2:
+  first-job-session2:
     runs-on: ubuntu-latest
 
     steps:
       - name: Hola Mundo
         run: echo "Hola mundo"
+
+  second-job-session2:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Hola Mundo segundo
+        run: echo "Hola mundo segundo"
