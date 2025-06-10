@@ -200,7 +200,7 @@ jobs:
     runs-on: ubuntu-latest
 
     outputs:
-      salida: { { steps.step_1.outputs.my_variable } }
+      salida: ${{ steps.step_1.outputs.my_variable }}
 
     env:
       NAME: CodigoFacilito
