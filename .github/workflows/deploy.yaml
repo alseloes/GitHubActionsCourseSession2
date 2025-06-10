@@ -211,7 +211,7 @@ jobs:
         run: echo "my-variable=Hola Mundo" >> GITHUB_OUTPUT
 
       - name: Obtener mensaje
-        run: echo "{{ steps.step_1.outputs.my_variable }}"
+        run: echo "${{ steps.step_1.outputs.my_variable }}"
 
   second-job:
     needs: first-job
