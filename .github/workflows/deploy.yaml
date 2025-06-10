@@ -170,9 +170,6 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
 
-    env:
-      NAME: CodigoFacilito
-
     steps:
       - name: Visualizando path
         id: step_1
@@ -187,7 +184,7 @@ jobs:
 
     steps:
       - name: Hola Mundo segundo
-        run: echo "Hola mundo segundo ${{github.ref}}"
+        run: echo "Hola mundo segundo ${{ github.ref }}"
 
 # --------------------Example 9: Compartir información entre jobs -----------------#
 
