@@ -105,7 +105,39 @@
 # --------------------Example 6: Steps & actions -----------------#
 # Action se ejecuta a nivel de steps
 
-name: Sixth Deploy Session 2
+# name: Sixth Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+
+#     env:
+#       NAME: CodigoFacilito
+
+#     steps:
+#       - name: Working dir
+#         run: ls -la
+
+#       - name: Action
+#         uses: actions/checkout@v4
+
+#       - name: Working dir after action
+#         run: ls -la
+
+#   second-job:
+#     needs: first-job
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola Mundo segundo
+#         run: echo "Hola mundo segundo {{github.ref}}"
+
+# --------------------Example 7: $GITHUB_OUTPUT -----------------#
+# Variable de entorno
+
+name: Seventh Deploy Session 2
 
 on: push
 
@@ -117,14 +149,8 @@ jobs:
       NAME: CodigoFacilito
 
     steps:
-      - name: Working dir
-        run: ls -la
-
-      - name: Action
-        uses: actions/checkout@v4
-
-      - name: Working dir after action
-        run: ls -la
+      - name: Visualizando path
+        run: echo $GITHUB_OUTPUT
 
   second-job:
     needs: first-job
