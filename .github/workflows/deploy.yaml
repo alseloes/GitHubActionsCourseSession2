@@ -57,21 +57,47 @@
 # --------------------Example 4: if + context -----------------#
 # If se emplea para generar condicionales, context se usa para acceder a lo que está sucediendo en el workflow
 
-name: Fourth Deploy Session 2
+# name: Fourth Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Hola Mundo
+#         run: echo "Hola mundo"
+
+#   second-job:
+#     if: ${{ github.ref == 'refs/heads/main'}} # En este caso, para que el contexto sea main
+#     needs: first-job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Hola Mundo segundo
+#         run: echo "Hola mundo segundo"
+
+# --------------------Example 5: env -----------------#
+# Se emplea para generar variables de entorno
+
+name: Fifth Deploy Session 2
 
 on: push
 
 jobs:
   first-job:
     runs-on: ubuntu-latest
+
+    env: #Definir variables de entorno
+      NAME: CodigoFacilito
+
     steps:
       - name: Hola Mundo
-        run: echo "Hola mundo"
+        run: echo "Hola mundo $NAME"
 
   second-job:
-    if: ${{ github.ref == 'refs/heads/main'}} # En este caso, para que el contexto sea main
     needs: first-job
     runs-on: ubuntu-latest
+
     steps:
       - name: Hola Mundo segundo
         run: echo "Hola mundo segundo"
