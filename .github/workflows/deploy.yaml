@@ -1,18 +1,55 @@
-name: Second Deploy Session 2
+# --------------------Example 1: 1 Job--------------------#
+
+# name: Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-deploy-session2:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola Mundo
+#         run: echo "Hola mundo"
+
+# --------------------Example 2: two Jobs-----------------#
+
+# name: Second Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola Mundo
+#         run: echo "Hola mundo"
+
+#   second-job:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Hola Mundo segundo
+#         run: echo "Hola mundo segundo"
+
+# --------------------Example 3: needs -----------------#
+# Se emplea para generar dependencias, de manera que el segundo job se ejecuta después del primer job
+
+name: Third Deploy Session 2
 
 on: push
 
 jobs:
-  first-job-session2:
+  first-job:
     runs-on: ubuntu-latest
-
     steps:
       - name: Hola Mundo
         run: echo "Hola mundo"
 
-  second-job-session2:
+  second-job:
+    needs: first-job
     runs-on: ubuntu-latest
-
     steps:
       - name: Hola Mundo segundo
         run: echo "Hola mundo segundo"
