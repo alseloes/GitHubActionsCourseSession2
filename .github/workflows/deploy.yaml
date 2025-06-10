@@ -36,7 +36,28 @@
 # --------------------Example 3: needs -----------------#
 # Se emplea para generar dependencias, de manera que el segundo job se ejecuta después del primer job
 
-name: Third Deploy Session 2
+# name: Third Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Hola Mundo
+#         run: echo "Hola mundo"
+
+#   second-job:
+#     needs: first-job
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Hola Mundo segundo
+#         run: echo "Hola mundo segundo"
+
+# --------------------Example 4: if + context -----------------#
+# If se emplea para generar condicionales, context se usa para acceder a lo que está sucediendo en el workflow
+
+name: Fourth Deploy Session 2
 
 on: push
 
@@ -48,6 +69,7 @@ jobs:
         run: echo "Hola mundo"
 
   second-job:
+    if: ${{ github.ref == 'refs/heads/main'}} # En este caso, para que el contexto sea main
     needs: first-job
     runs-on: ubuntu-latest
     steps:
