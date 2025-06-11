@@ -243,7 +243,45 @@
 
 # --------------------Example 11: Pasar artefacto de un job a otro-----------------#
 
-name: Eleventh Deploy Session 2
+# name: Eleventh Deploy Session 2
+
+# on: push
+
+# jobs:
+#   first-job:
+#     runs-on: ubuntu-latest
+
+#     outputs:
+#       salida: ${{ steps.step_1.outputs.my_variable }}
+
+#     steps:
+#       - name: Generando archivo
+#         run: |
+#           echo "Archivo prueba, hola" >> test.log
+
+#       - name: Subir artefacto
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: archivo-text
+#           path: test.log
+
+#   second-job:
+#     runs-on: ubuntu-latest
+#     needs: first-job
+
+#     steps:
+#       - name: Descargar artefacto
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: archivo-text
+
+#       - name: Cat file
+#         run: cat test.log
+
+
+# --------------------Example 12: Strategy-----------------#
+
+name: Twelfth Deploy Session 2
 
 on: push
 
@@ -251,29 +289,13 @@ jobs:
   first-job:
     runs-on: ubuntu-latest
 
-    outputs:
-      salida: ${{ steps.step_1.outputs.my_variable }}
+    strategy:
+      matrix:
+        message: ["Hola", "DevJuan", "GitHub Actions"]
+        message2: [1, 2]
+
+
 
     steps:
-      - name: Generando archivo
-        run: |
-          echo "Archivo prueba, hola" >> test.log
-
-      - name: Subir artefacto
-        uses: actions/upload-artifact@v4
-        with:
-          name: archivo-text
-          path: test.log
-
-  second-job:
-    runs-on: ubuntu-latest
-    needs: first-job
-
-    steps:
-      - name: Descargar artefacto
-        uses: actions/download-artifact@v4
-        with: # Recibe como parámetro el indicador name del archivo
-          name: archivo-text
-
-      - name: Cat file
-        run: cat test.log
+      - name: Print message
+        run: echo "${{ matrix.message }} with ${{ matrix.message2 }}"
