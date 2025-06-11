@@ -279,7 +279,7 @@
 #         run: cat test.log
 
 
-# --------------------Example 12: Strategy-----------------#
+# --------------------Example 12: Strategy & matrix-----------------#
 
 name: Twelfth Deploy Session 2
 
@@ -293,8 +293,6 @@ jobs:
       matrix:
         message: ["Hola", "DevJuan", "GitHub Actions"]
         message2: [1, 2]
-
-
 
     steps:
       - name: Print message
